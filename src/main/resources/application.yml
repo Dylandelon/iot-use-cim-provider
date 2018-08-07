@@ -1,0 +1,22 @@
+spring:
+  rabbitmq:
+    host: 10.39.10.89
+    port: 5672
+    username: UES-caixian
+    password: 1QMsPY207NT!
+    virtual-host: UES-caixian
+  cloud:
+    stream:
+      default-binder: rabbit
+      bindings:
+        output:
+          destination: iot_edge_data
+          contentType: application/json
+      rabbit:
+        bindings:
+          output:
+            producer:
+              routingKeyExpression: '''realtime.uncim'''
+server:
+  port: 8081
+
